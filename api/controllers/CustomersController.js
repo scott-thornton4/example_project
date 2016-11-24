@@ -76,6 +76,12 @@ module.exports = {
 
 			res.redirect('/customers/show/' + req.param('id'));
 		});
+	},
+
+	destroy: function(req, res, next) {
+		Customers.destroy(req.param('id')).exec(function() {
+			res.redirect('/customers/');
+		});
 	}
 
 };
