@@ -21,7 +21,11 @@ module.exports = {
   	pin: {
   		type: "int",
   		required: true
-  	}
+  	},
+    stocks: {
+      collection: "stock",
+      via: "owner"
+    }
   }
 };
 
