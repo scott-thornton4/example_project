@@ -15,9 +15,9 @@
 		<td><%= customer.name %></td>
 		<td><%= customer.email %></td>
 		<td><%= customer.pin %></td>
-		<td><a href="/customers/show/<% customer.id %>">Show</a></td>
-		<td><a href="/customers/edit/<% customer.id %>">Edit</a></td>
-		<td><a href="/customers/destroy/<% customer.id %>">Delete</a></td>
+		<td><a href="/customers/show/<%= customer.id %>">Show</a></td>
+		<td><a href="/customers/edit/<%= customer.id %>">Edit</a></td>
+		<td><a href="/customers/destroy/<%= customer.id %>">Delete</a></td>
 	</tr>
 	<% }) %>
 </table>
