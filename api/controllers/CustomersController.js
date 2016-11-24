@@ -38,6 +38,18 @@ module.exports = {
 				customer: customer
 			});
 		});
+	},
+
+	index: function(req, res, next) {
+		Customers.find(function foundCustomers(err, customers) {
+			if(err) {
+				return next(err);
+			}
+
+			res.view({
+				customers: customers
+			});
+		});
 	}
 };
 
