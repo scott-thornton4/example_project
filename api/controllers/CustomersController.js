@@ -15,13 +15,28 @@ module.exports = {
 	},
 
 	create: function(req, res, next) {
-		Customer.create(req.params.all(), function customerCreated(err, customer) {
+		Customers.create(req.params.all(), function customerCreated(err, customer) {
 			if(err) {
 				return next(err);
 			}
 
-			// res.json(customer);
-			res.redirect('/customer/show/' + customer.id);
+			res.redirect('/customers/show/' + customer.id);
+		});
+	},
+
+	show: function(req, res, next) {
+		Customers.findOne(req.param('id'), function foundCustomer(err, customer) {
+			if(err) {
+				return next(err);
+			}
+
+			if(!customer) {
+				return next();
+			}
+
+			res.view({
+				customer: customer
+			});
 		});
 	}
 };
