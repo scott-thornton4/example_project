@@ -50,6 +50,33 @@ module.exports = {
 				customers: customers
 			});
 		});
+	},
+
+	edit: function(req, res, next) {
+		Customers.findOne(req.param('id'), function foundCustomer(err, customer) {
+			if(err) {
+				return next(err);
+			}
+
+			if(!customer) {
+				return next();
+			}
+
+			res.view({
+				customer: customer
+			});
+		});
+	},
+
+	update: function(req, res, next) {
+		Customers.update(req.param('id'), req.params.all(), function customerUpdated(err) {
+			if(err) {
+				return res.redirect('/customers/edit/' + req.param('id'));
+			}
+
+			res.redirect('/customers/show/' + req.param('id'));
+		});
 	}
+
 };
 
